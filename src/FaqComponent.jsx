@@ -9,14 +9,20 @@ const propTypes = {
 
 const defaultProps = {
     styles: {
-        label: {
-            fontFamily: "Comic Sans MS",
-            color: "green",
-        },
-        input: {
-            background: "#ddd",
-            border: "1px solid red",
-        },
+        question: {
+            width: "100%", 
+            backgroundColor: "red", 
+            color: "white",
+            borderRadius: "5px",
+            padding: "1em"
+        }, 
+        answer: {
+            width: "100%", 
+            backgroundColor: "red", 
+            color: "white",
+            borderRadius: "5px",
+            padding: "1em"
+        }
     },
 };
 
@@ -44,7 +50,11 @@ class FaqComponent extends React.Component {
         
     }
     render() {
-        const styles = this.props.styles || {};
+        const styles = this.props.styles || 
+        {
+           
+        }
+        
 
         return (
             <div>
@@ -56,7 +66,7 @@ class FaqComponent extends React.Component {
                                     style={styles.question}
                                         className="question"
                                         onClick={() => {
-                                            toggleAnswer(index);
+                                            this.toggleAnswer(index);
                                         }}
                                     >
                                         {faq.question}
