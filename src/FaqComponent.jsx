@@ -19,14 +19,16 @@ const defaultProps = {
             justifyContent: "space-between",
             alignItems: "center",
             fontSize: "1.25em",
+            margin: "0.25em 0",
         },
         answer: {
             width: "100%",
             color: "black",
             borderRadius: "5px",
-            padding: "1em",
+            padding: "0 1em",
             textAlign: "left",
             fontSize: "1.25em",
+            margin: "0.5em 0",
         },
     },
 };
@@ -34,20 +36,28 @@ const defaultProps = {
 const FaqComponent = (props) => {
     const [rotate, setRotate] = useState({});
     const clickHandler = (current) => {
-        current.classList.toggle("show");
+        current.classList.toggle(props.showClassName || "show");
     };
 
-    const styles = props.styles || {};
+    //Merge default style with custom styles, keeping default style props
+    const questionStyles = {
+        ...defaultProps.styles.question,
+        ...props.styles.question,
+    };
+    const answerStyles = {
+        ...defaultProps.styles.answer,
+        ...props.styles.answer,
+    };
 
     return (
         <div className="faq-cont">
             {props.faqs.map((faq, i) => {
                 let current = null;
                 return (
-                    <div>
+                    <>
                         <p
-                            style={styles.question}
-                            className="question"
+                            style={questionStyles}
+                            className={props.qClassName ? props.qClassName : ""}
                             onClick={() => {
                                 clickHandler(current);
                                 setRotate({ ...rotate, [i]: !rotate[i] });
@@ -55,8 +65,11 @@ const FaqComponent = (props) => {
                         >
                             {faq.question}
                             <FontAwesomeIcon
-                                icon={faChevronCircleDown}
-                                size="l"
+                                icon={
+                                    props.icon
+                                        ? props.icon
+                                        : faChevronCircleDown
+                                }
                                 className={
                                     rotate[i]
                                         ? "rotate-forwards"
@@ -66,12 +79,12 @@ const FaqComponent = (props) => {
                         </p>
                         <p
                             ref={(ref) => (current = ref)}
-                            style={styles.answer}
-                            className="answer"
+                            style={answerStyles}
+                            className={props.aClassName ? props.aClassName : ""}
                         >
                             {faq.answer}
                         </p>
-                    </div>
+                    </>
                 );
             })}
         </div>
