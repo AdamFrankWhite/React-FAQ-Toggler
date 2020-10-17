@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
 const propTypes = {
-    label: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     styles: PropTypes.object,
 };
@@ -10,76 +10,73 @@ const propTypes = {
 const defaultProps = {
     styles: {
         question: {
-            width: "100%", 
-            backgroundColor: "red", 
+            width: "100%",
+            backgroundColor: "red",
             color: "white",
             borderRadius: "5px",
-            padding: "1em"
-        }, 
+            padding: "1em",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            fontSize: "1.25em",
+        },
         answer: {
-            width: "100%", 
-            backgroundColor: "red", 
-            color: "white",
+            width: "100%",
+            color: "black",
             borderRadius: "5px",
-            padding: "1em"
-        }
+            padding: "1em",
+            textAlign: "left",
+            fontSize: "1.25em",
+        },
     },
 };
 
-class FaqComponent extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+const FaqComponent = (props) => {
+    const [rotate, setRotate] = useState({});
+    const clickHandler = (current) => {
+        current.classList.toggle("show");
+    };
 
-    toggleAnswer(num) {
-       
-            let questions = document.querySelectorAll(".question");
-            //Prevent double-click highlight
-            questions[num].addEventListener(
-                "mousedown",
-                function (e) {
-                    e.preventDefault();
-                },
-                false
-            );
-    
-            let answers = document.querySelectorAll(".answer");
-            let arrows = document.querySelectorAll(".question i");
-            answers[num].classList.toggle("show");
-            arrows[num].classList.toggle("flip");
-        
-    }
-    render() {
-        const styles = this.props.styles || 
-        {
-           
-        }
-        
+    const styles = props.styles || {};
 
-        return (
-            <div>
-               
-                {this.props.faqs.map((faq, index) => {
-                            return (
-                                <div>
-                                    <p
-                                    style={styles.question}
-                                        className="question"
-                                        onClick={() => {
-                                            this.toggleAnswer(index);
-                                        }}
-                                    >
-                                        {faq.question}
-                                        <i class="fa fa-chevron-circle-down"></i>
-                                    </p>
-                                    <p style={styles.answer} className="answer">{faq.answer}</p>
-                                </div>
-                            );
-                        })}
-            </div>
-        );
-    }
-}
+    return (
+        <div className="faq-cont">
+            {props.faqs.map((faq, i) => {
+                let current = null;
+                return (
+                    <div>
+                        <p
+                            style={styles.question}
+                            className="question"
+                            onClick={() => {
+                                clickHandler(current);
+                                setRotate({ ...rotate, [i]: !rotate[i] });
+                            }}
+                        >
+                            {faq.question}
+                            <FontAwesomeIcon
+                                icon={faChevronCircleDown}
+                                size="l"
+                                className={
+                                    rotate[i]
+                                        ? "rotate-forwards"
+                                        : "rotate-back"
+                                }
+                            />
+                        </p>
+                        <p
+                            ref={(ref) => (current = ref)}
+                            style={styles.answer}
+                            className="answer"
+                        >
+                            {faq.answer}
+                        </p>
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
 
 FaqComponent.propTypes = propTypes;
 FaqComponent.defaultProps = defaultProps;
