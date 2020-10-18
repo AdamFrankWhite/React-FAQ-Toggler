@@ -3,67 +3,28 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
 const propTypes = {
-    onChange: PropTypes.func.isRequired,
-    styles: PropTypes.object,
-};
-
-const defaultProps = {
-    styles: {
-        question: {
-            width: "100%",
-            backgroundColor: "red",
-            color: "white",
-            borderRadius: "5px",
-            padding: "1em",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            fontSize: "1.25em",
-            margin: "0.25em 0",
-        },
-        answer: {
-            width: "100%",
-            color: "black",
-            borderRadius: "5px",
-            padding: "0 1em",
-            textAlign: "left",
-            fontSize: "1.25em",
-            margin: "0.5em 0",
-        },
-    },
+    faqs: PropTypes.array.isRequired,
 };
 
 const FaqComponent = (props) => {
-    const [rotate, setRotate] = useState({});
-    const clickHandler = (current) => {
-        // current.classList.toggle(props.showClassName || "show");
-    };
-
-    //Merge default style with custom styles, keeping default style props
-    const questionStyles = {
-        ...defaultProps.styles.question,
-        ...props.styles.question,
-    };
-    const answerStyles = {
-        ...defaultProps.styles.answer,
-        ...props.styles.answer,
-    };
+    //Set toggle state for each FAQ
+    const [toggle, setToggle] = useState({});
 
     return (
         <div className="faq-cont">
             {props.faqs.map((faq, i) => {
-                let current = null;
                 return (
                     <>
+                        {/* Question */}
                         <p
-                            style={questionStyles}
-                            className={props.qClassName ? props.qClassName : ""}
+                            className="faq-question-style"
                             onClick={() => {
-                                clickHandler(current);
-                                setRotate({ ...rotate, [i]: !rotate[i] });
+                                //Set toggle state for each FAQ, merging new and prev state
+                                setToggle({ ...toggle, [i]: !toggle[i] });
                             }}
                         >
                             {faq.question}
+                            {/* Icon */}
                             <FontAwesomeIcon
                                 icon={
                                     props.icon
@@ -71,21 +32,18 @@ const FaqComponent = (props) => {
                                         : faChevronCircleDown
                                 }
                                 className={
-                                    rotate[i]
-                                        ? "rotate-forwards"
-                                        : "rotate-back"
+                                    toggle[i]
+                                        ? "faq-rotate-forwards"
+                                        : "faq-rotate-back"
                                 }
                             />
                         </p>
+                        {/* Answer */}
                         <p
-                            ref={(ref) => (current = ref)}
-                            style={answerStyles}
                             className={
-                                props.aClassName
-                                    ? props.aClassName +
-                                      " " +
-                                      (rotate[i] && props.showClassName)
-                                    : ""
+                                toggle[i]
+                                    ? "faq-answer-style faq-show-animation"
+                                    : "faq-answer-style"
                             }
                         >
                             {faq.answer}
@@ -98,6 +56,5 @@ const FaqComponent = (props) => {
 };
 
 FaqComponent.propTypes = propTypes;
-FaqComponent.defaultProps = defaultProps;
 
 export default FaqComponent;
