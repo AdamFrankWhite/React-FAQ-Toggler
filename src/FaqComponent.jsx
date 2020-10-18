@@ -36,7 +36,7 @@ const defaultProps = {
 const FaqComponent = (props) => {
     const [rotate, setRotate] = useState({});
     const clickHandler = (current) => {
-        current.classList.toggle(props.showClassName || "show");
+        // current.classList.toggle(props.showClassName || "show");
     };
 
     //Merge default style with custom styles, keeping default style props
@@ -80,7 +80,13 @@ const FaqComponent = (props) => {
                         <p
                             ref={(ref) => (current = ref)}
                             style={answerStyles}
-                            className={props.aClassName ? props.aClassName : ""}
+                            className={
+                                props.aClassName
+                                    ? props.aClassName +
+                                      " " +
+                                      (rotate[i] && props.showClassName)
+                                    : ""
+                            }
                         >
                             {faq.answer}
                         </p>
