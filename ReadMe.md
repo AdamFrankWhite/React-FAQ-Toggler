@@ -55,6 +55,12 @@ Stylesheet is included in faq-styles.css:
     flex-direction: column;
     align-items: center;
     padding-top: 1.5em;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .faq-answer-style {
     display: none;
