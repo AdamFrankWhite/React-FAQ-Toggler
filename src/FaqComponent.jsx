@@ -11,8 +11,8 @@ const FaqComponent = (props) => {
     const [toggle, setToggle] = useState({});
 
     return (
-        <div className="faq-cont">
-            {props.faqs.map((faq, i) => {
+        <>
+            {props.faqs && props.faqs.map((faq, i) => {
                 return (
                     <>
                         {/* Question */}
@@ -51,7 +51,7 @@ const FaqComponent = (props) => {
                     </>
                 );
             })}
-        </div>
+        </>
     );
 };
 
