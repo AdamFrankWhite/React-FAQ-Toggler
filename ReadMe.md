@@ -96,7 +96,7 @@ Stylesheet is included in faq-styles.css:
     }
 
     25% {
-        height: calc(ft-content/4);
+        height: calc(fit-content/4);
     }
 
     50% {
