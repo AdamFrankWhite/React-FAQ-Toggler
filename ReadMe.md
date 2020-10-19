@@ -1,5 +1,7 @@
 # React FAQ Toggler Component
 
+Simple FAQ component with individual question/answer toggle, with smooth icon rotate on click.
+
 ## Usage:
 
 Pass in the props of faqs, containing an array of objects, with the keys of 'question' and 'answer':
@@ -103,7 +105,7 @@ Recommended default styles:
     }
 
     25% {
-        height: calc(ft-content/4);
+        height: calc(fit-content/4);
     }
 
     50% {
@@ -147,4 +149,4 @@ function App() {
 
 ## Screenshot
 
-![Alt text](/screenshot.png?raw=true "screenshot")
+![Screenshot](https://github.com/AdamFrankWhite/React-FAQ-Toggler/blob/master/screenshot.png)
