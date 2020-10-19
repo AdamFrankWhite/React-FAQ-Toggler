@@ -8,6 +8,10 @@ module.exports = {
         filename: "FaqComponent.js",
         libraryTarget: "commonjs2",
     },
+    externals: {
+        react: "commonjs react",
+        "react-dom": "commonjs react-dom",
+    },
     module: {
         rules: [
             {
