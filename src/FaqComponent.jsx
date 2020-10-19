@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
 const propTypes = {
     faqs: PropTypes.array.isRequired,
 };
@@ -25,18 +23,13 @@ const FaqComponent = (props) => {
                         >
                             {faq.question}
                             {/* Icon */}
-                            <FontAwesomeIcon
-                                icon={
-                                    props.icon
-                                        ? props.icon
-                                        : faChevronCircleDown
-                                }
+                            <span
                                 className={
                                     toggle[i]
                                         ? "faq-rotate-forwards"
                                         : "faq-rotate-back"
                                 }
-                            />
+                            >&gt;</span>
                         </p>
                         {/* Answer */}
                         <p

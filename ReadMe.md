@@ -113,27 +113,3 @@ Stylesheet is included in faq-styles.css:
     }
 }
 ```
-
-## Custom Icon
-
-Uses FontAwesome icons for responsiveness - default icon is a chevron, but you can pass in your own FontAwesome icon by passing it through the 'icon' props:
-
-```jsx
-import FaqComponent from "react-faq-toggler";
-import { SomeOtherIcon } from "@fortawesome/free-solid-svg-icons";
-function App() {
-    const data = [
-        { question: "Hello there?", answer: "Boo" },
-        { question: "You what?", answer: "Meh" },
-        { question: "A third question, I have", answer: "Well, do you now!" },
-    ];
-    return (
-        <div className="App">
-            <h1>My Super App</h1>
-            <div className="faq-cont">
-                <FaqComponent faqs={data} icon={someOtherIcon} />
-            </div>
-        </div>
-    );
-}
-```
