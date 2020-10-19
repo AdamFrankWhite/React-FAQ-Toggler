@@ -1,6 +1,6 @@
 {
     "name": "react-faq-toggler",
-    "version": "1.2.5",
+    "version": "1.2.9",
     "description": "React FAQ Toggler component",
     "main": "./lib/FaqComponent.js",
     "license": "MIT",
@@ -26,5 +26,10 @@
         "style-loader": "^2.0.0",
         "webpack": "^4.5.0",
         "webpack-cli": "^3.2.1"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.32",
+        "@fortawesome/free-solid-svg-icons": "^5.15.1",
+        "@fortawesome/react-fontawesome": "^0.1.11"
     }
 }

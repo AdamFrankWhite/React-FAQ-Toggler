@@ -81,12 +81,12 @@ Stylesheet is included in faq-styles.css:
 }
 
 .faq-rotate-forwards {
-    transform: rotate(180deg);
+    transform: rotate(270deg);
     transition: 0.2s transform;
 }
 
 .faq-rotate-back {
-    transform: rotate(0deg);
+    transform: rotate(90deg);
     transition: 0.2s transform;
 }
 @keyframes faq-answer-slide {
