@@ -56,7 +56,7 @@
     }
 
     25% {
-        height: calc(ft-content/4);
+        height: calc(fit-content/4);
     }
 
     50% {

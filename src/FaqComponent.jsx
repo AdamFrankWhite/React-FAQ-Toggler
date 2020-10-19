@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons";
+
 const propTypes = {
     faqs: PropTypes.array.isRequired,
 };
@@ -11,10 +10,10 @@ const FaqComponent = (props) => {
     const [toggle, setToggle] = useState({});
 
     return (
-        <>
+        <div>
             {props.faqs && props.faqs.map((faq, i) => {
                 return (
-                    <>
+                    <div>
                         {/* Question */}
                         <p
                             className="faq-question-style"
@@ -48,10 +47,10 @@ const FaqComponent = (props) => {
                         >
                             {faq.answer}
                         </p>
-                    </>
+                    </div>
                 );
             })}
-        </>
+        </div>
     );
 };
 
