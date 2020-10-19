@@ -1,8 +1,8 @@
-# Work In Progress...
+# React FAQ Toggler Component
 
 ## Usage:
 
-Pass in the props of faqs, containing an array of objects, with the keys of 'question' and 'answer'
+Pass in the props of faqs, containing an array of objects, with the keys of 'question' and 'answer':
 
 ```jsx
 import FaqComponent from "react-faq-toggler";
@@ -27,9 +27,16 @@ function App() {
 
 By default, the FaqComponent will have a width of 100% of its parent container.
 
-## Required Stylesheet
+## Styling
 
-Stylesheet is included in faq-styles.css:
+Use the following class names to style the question/answer component:
+
+```html
+<p class="faq-question-style"></p>
+<p class="faq-answer-style"></p>
+```
+
+Recommended default styles:
 
 ```css
 .faq-question-style {
@@ -137,3 +144,7 @@ function App() {
     );
 }
 ```
+
+## Screenshot
+
+![Alt text](/screenshot.png?raw=true "screenshot")
