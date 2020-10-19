@@ -81,12 +81,12 @@ Stylesheet is included in faq-styles.css:
 }
 
 .faq-rotate-forwards {
-    transform: rotate(270deg);
+    transform: rotate(180deg);
     transition: 0.2s transform;
 }
 
 .faq-rotate-back {
-    transform: rotate(90deg);
+    transform: rotate(0deg);
     transition: 0.2s transform;
 }
 @keyframes faq-answer-slide {
@@ -96,7 +96,7 @@ Stylesheet is included in faq-styles.css:
     }
 
     25% {
-        height: calc(fit-content/4);
+        height: calc(ft-content/4);
     }
 
     50% {
@@ -111,5 +111,29 @@ Stylesheet is included in faq-styles.css:
         opacity: 1;
         height: fit-content;
     }
+}
+```
+
+## Custom Icon
+
+Uses FontAwesome icons for responsiveness - default icon is a chevron, but you can pass in your own FontAwesome icon by importing and passing it through the 'icon' props:
+
+```jsx
+import FaqComponent from "react-faq-toggler";
+import { SomeOtherIcon } from "@fortawesome/free-solid-svg-icons";
+function App() {
+    const data = [
+        { question: "Hello there?", answer: "Boo" },
+        { question: "You what?", answer: "Meh" },
+        { question: "A third question, I have", answer: "Well, do you now!" },
+    ];
+    return (
+        <div className="App">
+            <h1>My Super App</h1>
+            <div className="faq-cont">
+                <FaqComponent faqs={data} icon={someOtherIcon} />
+            </div>
+        </div>
+    );
 }
 ```
