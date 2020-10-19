@@ -149,4 +149,4 @@ function App() {
 
 ## Screenshot
 
-![Screenshot](https://github.com/AdamFrankWhite/React-FAQ-Toggler/blob/master/screenshot.png)
+![screenshot](https://user-images.githubusercontent.com/43864381/96481133-0b785680-1233-11eb-98c3-9983abc9dd1d.png)
